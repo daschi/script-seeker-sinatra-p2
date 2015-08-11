@@ -1,21 +1,23 @@
 farsi = Language.create(
 					language: 						"Persian-Farsi",
-  				countries_spoken:  		"Iran, Afghanistan", 
+  				regions:  		        "Iran", 
   				language_family: 			"Indo-European, Persian",
   				language_note: 				"This language is so cool",
   				script_type: 					"Persian Alphabet",
   				text_direction: 			"Right-to-Left",
-  				similar_languages: 		"Dari, Tajik, Hazaragi"
+  				similar_languages: 		"Dari, Tajik, Hazaragi",
+          region_code:          "IR"
   				)
 
 russian = Language.create(
 					language: 						"Russian",
-  				countries_spoken:  		"Russia", 
+  				regions:  		        "Russia", 
   				language_family: 			"Indo-European, Slavic",
   				language_note: 				"This language is so cool",
   				script_type: 					"Cyrillic",
   				text_direction: 			"Left to Right",
-  				similar_languages: 		"Bulgarian"
+  				similar_languages: 		"Bulgarian",
+          region_code:          "RU"
   				)
 
 parse_farsi

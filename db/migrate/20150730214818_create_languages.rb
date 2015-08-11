@@ -8,6 +8,7 @@ class CreateLanguages < ActiveRecord::Migration
   		t.string		:script_type
   		t.string		:text_direction
   		t.string		:similar_languages
+      t.string    :region_code
   	end
   end
 end

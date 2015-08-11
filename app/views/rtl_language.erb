@@ -1,3 +1,9 @@
+<ul class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li class="active">Letters</li>
+  <li><a href="/languages/<%= @language.id %>/words">Words</a></li>
+</ul>
+
 <div class="jumbotron language" id="<%= @language.id %>">
 	<div class="ui grid letters-button">
 			<% @language.letters.each do |letter| %>

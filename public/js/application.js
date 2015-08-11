@@ -12,10 +12,8 @@ $(document).ready(function(){
 	showMap();
 });
 
-//user kimono API
-
-
 //add the jvector map
+//TODO: Navigate to language page by clicking on region
 var showMap = function(){
   $("#world-map").vectorMap({
   	map: "world_mill",
@@ -23,16 +21,28 @@ var showMap = function(){
   });
 }
 
-//NOTE: Needs to check if the region clicked matches one of the languages in the database. i.e. if Farsi language has region_code IR?
+//NOTE: Needs to check if the region clicked matches one of the languages in the database. i.e. if Farsi language has region_code IR
 //I need to make this generalized to match any language/region
-var viewLanguagePage = function(event){
+var viewLanguagePage = function(event, code){
 	event.preventDefault();
-	// var language = $(event.target).attr("data-code");
-	// if (language == (<<object with language code here>>)){
-		//then redirect and show the page for that language
-		//replace 1 with the language ID number
-		window.location = "/languages/1"
-	// }
+	var map = $("div#world-map").vectorMap('get', 'mapObject');
+	var region = map.getRegionName(code)
+	
+	// var url = "/languages"
+	// var method = "POST"
+
+	// var request = $.ajax({
+	// 	url: url,
+	// 	method: method,
+	// 	dataType: "json"
+	// })
+
+	// request.done(function(response){
+	// 	console.log(response);
+	// })
+	debugger
+	// window.location = "/languages/1"
+
 }
 
 //Ajax the sessions/new page

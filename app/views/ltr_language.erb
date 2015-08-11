@@ -1,3 +1,16 @@
+<ul class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li class="active">Letters</li>
+  <li><a href="/languages/<%= @language.id %>/words">Words</a></li>
+</ul>
+
+<div class="well">
+<h3>Click here to listen to <%= @language.language %> words!</h3>
+	<form action="/languages/<%= @language.id %>/words" method="GET">
+		<input type="submit" class="btn btn-primary" value="Words">
+	</form>
+</div>
+
 <div class="jumbotron language" id="<%= @language.id %>">
 	<div class="ui grid letters-button">
 			<% @language.letters.each do |letter| %>
@@ -28,9 +41,3 @@
 	</div>
 </div>
 
-<div>
-	<form action="/languages/<%= @language.id %>/words" method="GET">
-		<label>Click here to listen to <%= @language.language %> words!</label>
-		<input type="submit" class="btn btn-primary" value="Words">
-	</form>
-</div>

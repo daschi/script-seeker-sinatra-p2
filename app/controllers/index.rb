@@ -4,7 +4,14 @@ get '/' do
 end
 
 post '/languages' do
-	id = params[:language_id]
+	if request.xhr?
+		p params
+		region = params[:regions]
+		language = Language.where(regions: region)
+		id = language.id
+	else
+		id = params[:language_id]
+	end
 	redirect "languages/#{id}"
 end
 
@@ -28,6 +35,7 @@ get '/languages/:language_id/letters/:id' do
 end
 
 get '/languages/:language_id/words' do
+	@language = Language.find(params[:language_id])
 	erb :words
 end
 
