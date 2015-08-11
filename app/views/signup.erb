@@ -1,0 +1,28 @@
+<div id="cd-signup" class="user-form">
+  <form action='/users' method='POST' class='form-horizontal'>
+  <legend>Sign up</legend>
+  <div class="form-group">
+    <label for="email" class="col-lg-2 control-label">Email</label>
+    <div class="col-lg-4">
+      <input type='text' name='email' class='form-control' placeholder='Email'>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="password" class="col-lg-2 control-label">Password</label>
+    <div class="col-lg-4">
+      <input type='password' name='password' class='form-control' placeholder='Password'>
+      <% if @error %>
+        <p class="text-danger"><%= @error[:signup_error] %></p>
+      <% end %>
+    </div>
+  </div>
+  <br>
+  <input type="submit" class="btn btn-primary" value="Join">
+  </form>
+  <br>
+  <br>
+  <div class="alert alert-info" style="width:50%;">Already a member? <a class="cd-signin" href="/sessions/new">Login here.</a>
+  </div>
+
+</div>

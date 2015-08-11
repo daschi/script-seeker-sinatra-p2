@@ -1,0 +1,36 @@
+<div class="jumbotron language" id="<%= @language.id %>">
+	<div class="ui grid letters-button">
+			<% @language.letters.each do |letter| %>
+				<div id="<%=letter.id%>" class="btn btn-success letter-container">
+					<span class="letter"><%= letter.isolated %></span>
+				</div>
+			<% end %>
+	</div>
+
+</div>
+
+<div class="jumbotron language">
+	<div class="lettercard ui raised segment letter-focus">
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr class="primary">
+					<th>Letter</th>
+					<th>Sound</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="ltr-language-display success">
+					<td id="isolated"></td>
+					<td id="sound"><audio controls src=''></audio></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div>
+	<form action="/languages/<%= @language.id %>/words" method="GET">
+		<label>Click here to listen to <%= @language.language %> words!</label>
+		<input type="submit" class="btn btn-primary" value="Words">
+	</form>
+</div>

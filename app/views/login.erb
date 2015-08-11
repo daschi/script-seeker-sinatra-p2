@@ -1,0 +1,28 @@
+<!-- *** Login Form *** -->
+<div id="cd-login" class="user-form">
+  <form id="login-form" action="/sessions" method='POST' class='form-horizontal submit-login'>
+    <legend>Login</legend>
+    <div class="form-group">
+      <label for="email" class="col-lg-2 control-label">Email</label>
+        <div class="col-lg-4">
+          <input type='text' name='email' class='form-control' placeholder='Email'>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password" class="col-lg-2 control-label">Password</label>
+        <div class="col-lg-4">
+          <input type='password' name='password' class='form-control' placeholder='Password'>
+            <% if @error %>
+              <p class="text-danger"><%= @error[:login_error] %></p>
+            <% end %>
+        </div>
+    </div>
+  <br>
+      <input id="submit" type="submit" class="btn btn-primary" value="Login">
+  </form>
+  <br>
+  <br>
+  <div class="alert alert-info" style="width:50%;">Don't have an account yet? <a class="cd-signup" href="/users/new">Join to save your progress.</a></div>
+</div>
+

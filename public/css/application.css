@@ -1,0 +1,40 @@
+.letter {
+	font-size: 40px;
+}
+
+.letter-focus{
+	font-size: 40px;
+	color: black;
+}
+
+#cd-login{
+  width: 60%;
+  float: left;
+}
+
+#cd-signup{
+  width: 60%;
+  float: left;
+}
+
+.letters-button{
+	width: 100%;
+
+}
+
+.letter-container{
+	padding: 10px;
+}
+
+.rtl-language-display > td{
+	font-size: 100px;
+}
+
+.ltr-language-display > td{
+	font-size: 50px;
+}
+
+tr td{
+	width: 20%;
+	font-size: 25px;
+}
