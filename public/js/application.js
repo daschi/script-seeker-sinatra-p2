@@ -84,8 +84,8 @@ var signupButtonListener = function(){
 	})
 }
 
-//ajax the POST /sessions page
-//NOTE: I'm not sure I'm going to keep this ajax call, since there are now parts of the page I have to update using jquery like the logout button and the logged in as button showing. I think it makes more sense in this situation to just redirect the user back to homepage, but at least I got some good ajax & event delegation practice out of it!
+// ajax the POST /sessions page
+// NOTE: I'm not sure I'm going to keep this ajax call, since there are now parts of the page I have to update using jquery like the logout button and the logged in as button showing. I think it makes more sense in this situation to just redirect the user back to homepage, but at least I got some good ajax & event delegation practice out of it!
 // var submitLoginListener = function(){
 // 	$('div.form-container').on("click", "form#login-form", function(e){
 // 		e.preventDefault();

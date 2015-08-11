@@ -11,6 +11,7 @@ class CreateLetters < ActiveRecord::Migration
       t.string    :sound_path
   		t.integer		:language_id
   		t.integer		:card_id
+      
   	end
   end
 end
