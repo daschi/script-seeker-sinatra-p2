@@ -1,0 +1,19 @@
+<%= erb :"partials/_quote" %>
+
+<div class="form-group form-container">
+  <form action="/languages" method="POST" id="pick-language">
+  <label style="font-size: 30px;" for="select" class="col-lg-2 control-label">Language:</label>
+    <div class="col-lg-3">
+      <select name="language_id" class="form-control" id="select">
+        <% @languages.each do |language| %>
+          <option value="<%= language.id %>"><%= language.language %></option>
+        <% end %>
+      </select>
+    </div>
+    <div class="language-picker" style="margin: 10px;">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    </form>
+</div>
+<h2>Pick by Region:</h2>
+<div id="world-map" style="width: 720px; height: 400px;"></div>

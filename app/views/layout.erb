@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/superhero/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/grid.css">
+    <link rel="stylesheet" href="/css/segment.css">
+    <link rel="stylesheet" href="/css/application.css">
+    <link rel="stylesheet" type="text/css" href="jvector/jquery-jvectormap.css">
+  <title>Script Seeker</title>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Scripts</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+      <nav class="main-nav">
+      <% if logged_in? %>
+      <ul class="nav navbar-nav">
+        <li><a href="/users/<%= session[:id] %>">Logged in as <%=current_user.email%></a></li>
+        <li><a href='/logout'>Logout</a></li>
+      </ul>
+      <% else %>
+      <ul class="nav navbar-nav">
+        <li><a id="show-login" class="cd-signin" href="/sessions/new">Login</a></li>
+        <li><a id="show-signup" class="cd-signup" href="/users/new">Sign up</a></li>
+      </ul>
+      <% end %>
+      </nav>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+<div class="page-header">
+  <h1 class="layout-heading">Script Seeker</h1>
+</div>
+  <%= yield %>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="http://jvectormap.com/js/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="/js/application.js"></script>
+<script src="jvector/jquery-jvectormap-world-mill.js"></script>
+<script src="/jvector/jquery-jvectormap.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="http://code.responsivevoice.org/responsivevoice.js"></script>
+</body>
+</html>
