@@ -8,41 +8,33 @@ $(document).ready(function(){
 	hideLetterCard();
 	loginButtonListener();
 	signupButtonListener();
-	// submitLoginListener();
+	letterListener();
 	showMap();
 });
 
-//add the jvector map
-//TODO: Navigate to language page by clicking on region
 var showMap = function(){
   $("#world-map").vectorMap({
   	map: "world_mill",
-  	onRegionClick: viewLanguagePage
+  	onRegionClick: grabLanguageByRegion
   });
 }
 
-//NOTE: Needs to check if the region clicked matches one of the languages in the database. i.e. if Farsi language has region_code IR
-//I need to make this generalized to match any language/region
-var viewLanguagePage = function(event, code){
+var grabLanguageByRegion = function(event, code){
 	event.preventDefault();
-	var map = $("div#world-map").vectorMap('get', 'mapObject');
-	var region = map.getRegionName(code)
-	
-	// var url = "/languages"
-	// var method = "POST"
+	var request = $.ajax({
+		url: "/languages/" + code,
+		method: "post"
+	})
 
-	// var request = $.ajax({
-	// 	url: url,
-	// 	method: method,
-	// 	dataType: "json"
-	// })
+	request.done(function(response){
+		var langObject = JSON.parse(response)
+		var language = langObject[0]
+		viewLanguagePage(language.id)
+	})
+}
 
-	// request.done(function(response){
-	// 	console.log(response);
-	// })
-	debugger
-	// window.location = "/languages/1"
-
+var viewLanguagePage = function(languageId){
+	window.location = "/languages/" + languageId
 }
 
 //Ajax the sessions/new page
@@ -84,33 +76,9 @@ var signupButtonListener = function(){
 	})
 }
 
-// ajax the POST /sessions page
-// NOTE: I'm not sure I'm going to keep this ajax call, since there are now parts of the page I have to update using jquery like the logout button and the logged in as button showing. I think it makes more sense in this situation to just redirect the user back to homepage, but at least I got some good ajax & event delegation practice out of it!
-// var submitLoginListener = function(){
-// 	$('div.form-container').on("click", "form#login-form", function(e){
-// 		e.preventDefault();
-//   	var url = "/sessions"
-//   	var method = "POST"
-//   	var data = $(this).serialize()
-
-//   	var request = $.ajax({
-//   		url: url,
-//   		method: method,
-//   		data: data 
-//   	}).success(function(data, status, jqXHR){
-//   		var successData = JSON.parse(data)
-//   		console.log(successData);
-//   		if (successData["success"] == true){
-//   			$('.user-form').hide();
-//   			$('#show-login').text("Logged in as " + successData["email"]);
-//   		}
-//   	})
-
-// 	});
-// }
-
-//Show more letter information
- $('div.letter-container').on('click', function(event){
+//Set listener for each letter
+ var letterListener = function(){
+ 	$('div.letter-container').on('click', function(event){
 	var letterId = $(event.currentTarget).attr('id');
 	var languageId = $('.language').attr('id');
 
@@ -129,7 +97,9 @@ var signupButtonListener = function(){
 		console.log("FAIL");
 	})
 })
+}
 
+//Show/hide each letter's card
 var showLetterCard = function(letter){
 	$('.lettercard').show();
 	$('td#name').html(letter.name)
@@ -145,11 +115,11 @@ var hideLetterCard = function(){
 }
 
 //TO DO:
-//AJAX submit the sign up form submission
-//AJAX fix the login form submission
-//AJAX language page to show underneath search bar
-//Add a jvector map to index page that leads to language bar with specific languages based on country picked. Pick by language or pick by country feature.
+//AJAX fix the login form submission DONE
+//AJAX the language bar to show above each language page
+//Add a jvector map to index page that leads to language bar with specific languages based on country picked. Pick by language or pick by country feature. DONE
 //Add a canvas to draw on
-//Format the letter card view
+//Format the letter card view DONE
 //Add some cool js animation to the letter cards
-//Add some example words to the database per letter (ARGH)
+//Add some example words to the database per letter 
+//TESTING!!!!!

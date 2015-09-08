@@ -38,3 +38,7 @@ tr td{
 	width: 20%;
 	font-size: 25px;
 }
+
+td#pf{
+	text-align: right;
+}
